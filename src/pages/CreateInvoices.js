@@ -99,7 +99,7 @@ const OrderForm = () => {
       roundOff
     };
 
-    fetch('https://a91e-49-34-185-124.ngrok-free.app/invoice/create', {
+    fetch('http://localhost:4000/invoice/create', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -124,7 +124,7 @@ const OrderForm = () => {
     });
   
     try {
-      const response = await fetch(`https://a91e-49-34-185-124.ngrok-free.app/invoice/download/${invoiceId}`, {
+      const response = await fetch(`http://localhost:4000 /invoice/download/${invoiceId}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
