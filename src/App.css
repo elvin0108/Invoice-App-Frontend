@@ -1,0 +1,408 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Merriweather', serif;
+}
+
+.home{
+  color: black;
+}
+
+.logo{
+  height:70px;
+  width: 70px;
+  margin-right: 40px;
+  margin-bottom: 5px;
+}
+
+.container{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin-left: 30vw;
+  margin-right: 15vw;
+  padding-top: 60px;
+  row-gap: 25px;
+}
+
+.container .box {
+  height: 100%;
+  width: 90%;
+  padding: 20px;
+  border-radius: 7px;
+  border: 1px solid transparent;
+  color: #fff;
+}
+
+.container .box:nth-child(3n-2){
+  background-color: #279EFF;
+}
+.container .box:nth-child(3n-1){
+  background-color: #03C988;
+}
+.container .box:nth-child(3n){
+  background-color: #FFB84C;
+}
+
+.container .box:nth-child(3n-2):hover{
+  border-color: #279EFF;
+  background-color: #fff;
+  transition: 0.5s;
+  color: #279EFF;
+}
+
+.container .box:nth-child(3n-1):hover{
+  border-color: #03C988;
+  background-color: #fff;
+  transition: 0.5s;
+  color: #03C988;
+
+}
+
+.container .box:nth-child(3n):hover{
+  border-color: #FFB84C;
+  background-color: #fff;
+  transition: 0.5s;
+  color: #FFB84C;
+}
+
+.container .box .box-head{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: bolder;
+  font-size: 30px;
+  padding-bottom: 20px;
+}
+.invoice-container {
+  width: 60vw;
+  margin: 50px 300px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+h1 {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 20px;
+  
+}
+
+.bill-box-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.bill-box-header .btn-primary{
+  font-size: 12px;
+  color: #fff;
+  text-decoration:none;
+  background-color: #03C988;
+  padding: 5px;
+  border-radius: 3px;
+  border: 1px solid transparent;
+  width: 20vw;
+}
+.bill-box-header .btn-primary:hover, #reset:hover{
+  background-color: #fff;
+  color: #03C988;
+  border: 1px solid #03C988;
+  transition: 0.8s;
+}
+
+#reset{
+  font-size: 12px;
+  color: #fff;
+  text-decoration:none;
+  background-color: #03C988;
+  padding: 5px;
+  border-radius: 3px;
+  border: 1px solid transparent;
+  width: 5vw;
+}
+
+.bill-box1{
+  height: 40vh;
+  width: 50vw;
+  margin: 20px auto;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+}
+.bill-box1:hover{
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: 0.5s;
+}
+.bill-box2{
+  height: 50vh;
+  width: 50vw;
+  margin: 20px auto;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+}
+.bill-box2:hover{
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: 0.5s;
+}
+.bill-box3{
+  height: 55vh;
+  width: 50vw;
+  margin: 20px auto;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+}
+.bill-box3:hover{
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: 0.5s;
+}
+
+.form-group{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.form-control {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 30vw;
+  height: 5vh;
+  padding: 10px;
+}
+.form-control:hover{
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: 0.5s;
+}
+
+.btn-success {
+  height: 7vh;
+  width: 10vw;
+  background-color: #03C988; /* Green color for "Add Product" */
+  color: #fff;
+  border: none;
+  position: relative;
+  left: 35%;
+  border-radius: 3px;
+}
+
+.btn-success:hover{
+  background-color: #fff;
+  color: #03C988;
+  border: 1px solid #03C988;
+  transition: 0.8s;
+}
+
+table{
+  width: 50vw;
+  border:1px solid #000;
+  border-collapse: collapse;
+  position: relative;
+  margin: auto;
+}
+
+th, td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ccc;
+}
+
+th {
+  background-color:#176B87;
+  font-weight: bold;
+  height: 10px;
+  color:aliceblue;
+  letter-spacing: 1px;
+}
+
+.buttons{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 40vw;
+  margin: 5vh auto;
+}
+.btn-danger{
+  background-color:crimson;
+  border: none;
+  color: aliceblue;
+  height: 20px;
+  width: 50px;
+  border-radius: 3px;
+}
+
+.btn-primary, .btn-info, .btn-secondary{
+  height: 7vh;
+  width: 10vw;
+  background-color:#176B87; /* Green color for "Add Product" */
+  color: #fff;
+  border-radius: 5px;
+  border: none;
+
+}
+
+.btn-primary:hover, .btn-info:hover, .btn-secondary:hover{
+  background-color: #fff;
+  color: #176B87;
+  border: 1px solid #176B87;
+  transition: 0.8s;
+}
+.invoices-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 70px auto;
+}
+
+.invoice-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  height: 18vh;
+  width: 20vw;
+  padding: 15px;
+  border-radius: 7px;
+  border: 1px solid transparent;
+  color: #fff;
+  background-color: #03C988;
+  font-size: 20px;
+  cursor: pointer;
+  text-decoration: none;
+}
+.invoice-box-text{
+  margin-top: 5px;
+}
+.invoice-icon{
+  font-size: 35px;
+}
+
+.invoice-box:hover{
+  border: 1px solid #03C988;
+  color: #03C988;
+  background-color: #fff;
+  transition: 0.8s;
+}
+#cent-tax, #cent-tax-amount, #state-tax, #state-tax-amount {
+  width: 30%;
+  margin-left: 10px;
+}
+.cent-tax,.state-tax{
+  position: relative;
+  left: 6.5%;
+}
+
+@media only screen and (max-width: 700px) {
+  .container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 20px;
+    margin-left: 10vw;
+    margin-right: 15vw;
+    padding-top: 55px;
+    row-gap: 25px;
+  }
+  .container .box {
+    height: 100%;
+    width: 100%;
+    padding: 20px;
+    border-radius: 7px;
+    border: 1px solid transparent;
+    color: #fff;
+  }
+  .container .box .box-head{
+    font-size: 25px;
+  }
+  .num{
+    width: 100px;
+  }
+  .invoice-container {
+    width: 90vw;
+    margin: 50px auto;
+  }
+  .bill-box1{
+    height: 42vh;
+    width: 80vw;
+  }
+  .bill-box2{
+    height: 50vh;
+    width: 80vw;
+  }
+  .bill-box3{
+    height: 50vh;
+    width: 80vw;
+  }
+
+  .form-group{
+    margin-top: 20px;
+  }
+  .form-control {
+    width: 40vw;
+    height: 5vh;
+  }
+  .bill-box-header{
+    display: block;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  .bill-box-header h3{
+   position: relative;
+   left: 10vw;
+   margin-bottom: 10px;
+  }
+  h3.bill-details{
+    position: relative;
+   left: 20vw;
+  }
+  .bill-box-header .btn-primary, #reset{
+    font-size: 12px;
+    width: 45vw;
+    height: 4vh;
+    padding: auto;
+    position: relative;
+    left: 15vw;
+  }
+  .btn-success {
+    height: 5vh;
+    width: 20vw;
+    margin-top: 10px;
+  }
+  .table-resp{
+    overflow-x:auto;
+  }
+  
+  .buttons{
+    width: 80vw;
+  }
+  .btn-primary, .btn-info, .btn-secondary{
+    width: 25vw;
+  }
+  .invoice-box {
+    height: 15vh;
+    width: 50vw;
+  }
+  #cent-tax, #cent-tax-amount, #state-tax, #state-tax-amount {
+    width: 30%;
+    margin-left: 10px;
+  }
+  .cent-tax,.state-tax{
+    position: relative;
+    left: 22%;
+  }
+  
+}
