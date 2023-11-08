@@ -99,7 +99,7 @@ const OrderForm = () => {
       roundOff
     };
 
-    fetch('http://localhost:4000/invoice/create', {
+    fetch('https://invoice-app-backend-lake.vercel.app/invoice/create', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -124,7 +124,7 @@ const OrderForm = () => {
     });
   
     try {
-      const response = await fetch(`http://localhost:4000 /invoice/download/${invoiceId}`, {
+      const response = await fetch(`https://invoice-app-backend-lake.vercel.app/invoice/download/${invoiceId}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
