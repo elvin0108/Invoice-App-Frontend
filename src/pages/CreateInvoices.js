@@ -5,6 +5,8 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const OrderForm = () => {
   const [customerName, setCustomerName] = useState('');
+  const [invoiceNo, setInvoiceNo] = useState('');
+  const [date, setdate] = useState('');
   const [address, setAddress] = useState('');
   const [placeOfSupply, setPlaceOfSupply] = useState('');
   const [gstInNo, setGstInNo] = useState('');
@@ -85,6 +87,8 @@ const OrderForm = () => {
       autoClose: 2000,
     })
     const formData = {
+      invoiceNo,
+      date,
       customerName,
       address,
       placeOfSupply,
@@ -173,6 +177,22 @@ const OrderForm = () => {
           </div>
           <hr />
           <Form>
+          <Form.Group class="form-group">
+              <Form.Label>Invoice No.</Form.Label>
+              <Form.Control class="form-input"
+                type="text"
+                value={invoiceNo}
+                onChange={(e) => setInvoiceNo(e.target.value)}
+              />
+          </Form.Group>
+            <Form.Group class="form-group">
+              <Form.Label>Date</Form.Label>
+              <Form.Control class="form-input"
+                type="date"
+                value={date}
+                onChange={(e) => setdate(e.target.value)}
+              />
+            </Form.Group>
             <Form.Group class="form-group">
               <Form.Label>Customer Name</Form.Label>
               <Form.Control class="form-input"
