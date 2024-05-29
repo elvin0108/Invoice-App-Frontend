@@ -7,18 +7,18 @@
   font-family: 'Merriweather', serif;
 }
 
-.home{
+.home {
   color: black;
 }
 
-.logo{
-  height:70px;
+.logo {
+  height: 70px;
   width: 70px;
   margin-right: 40px;
   margin-bottom: 5px;
 }
 
-.container{
+.container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   margin-left: 30vw;
@@ -36,24 +36,26 @@
   color: #fff;
 }
 
-.container .box:nth-child(3n-2){
+.container .box:nth-child(3n-2) {
   background-color: #279EFF;
 }
-.container .box:nth-child(3n-1){
+
+.container .box:nth-child(3n-1) {
   background-color: #03C988;
 }
-.container .box:nth-child(3n){
+
+.container .box:nth-child(3n) {
   background-color: #FFB84C;
 }
 
-.container .box:nth-child(3n-2):hover{
+.container .box:nth-child(3n-2):hover {
   border-color: #279EFF;
   background-color: #fff;
   transition: 0.5s;
   color: #279EFF;
 }
 
-.container .box:nth-child(3n-1):hover{
+.container .box:nth-child(3n-1):hover {
   border-color: #03C988;
   background-color: #fff;
   transition: 0.5s;
@@ -61,14 +63,14 @@
 
 }
 
-.container .box:nth-child(3n):hover{
+.container .box:nth-child(3n):hover {
   border-color: #FFB84C;
   background-color: #fff;
   transition: 0.5s;
   color: #FFB84C;
 }
 
-.container .box .box-head{
+.container .box .box-head {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -76,6 +78,7 @@
   font-size: 30px;
   padding-bottom: 20px;
 }
+
 .invoice-container {
   width: 60vw;
   margin: 50px 300px;
@@ -90,36 +93,39 @@ h1 {
   text-align: center;
   font-size: 28px;
   margin-bottom: 20px;
-  
+
 }
 
-.bill-box-header{
+.bill-box-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
 }
-.bill-box-header .btn-primary{
+
+.bill-box-header .btn-primary {
   font-size: 12px;
   color: #fff;
-  text-decoration:none;
+  text-decoration: none;
   background-color: #03C988;
   padding: 5px;
   border-radius: 3px;
   border: 1px solid transparent;
   width: 20vw;
 }
-.bill-box-header .btn-primary:hover, #reset:hover{
+
+.bill-box-header .btn-primary:hover,
+#reset:hover {
   background-color: #fff;
   color: #03C988;
   border: 1px solid #03C988;
   transition: 0.8s;
 }
 
-#reset{
+#reset {
   font-size: 12px;
   color: #fff;
-  text-decoration:none;
+  text-decoration: none;
   background-color: #03C988;
   padding: 5px;
   border-radius: 3px;
@@ -127,7 +133,7 @@ h1 {
   width: 5vw;
 }
 
-.bill-box1{
+.bill-box1 {
   height: 55vh;
   width: 50vw;
   margin: 20px auto;
@@ -136,38 +142,43 @@ h1 {
   border-radius: 5px;
   background-color: #fff;
 }
-.bill-box1:hover{
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  transition: 0.5s;
-}
-.bill-box2{
-  height: 50vh;
-  width: 50vw;
-  margin: 20px auto;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #fff;
-}
-.bill-box2:hover{
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  transition: 0.5s;
-}
-.bill-box3{
-  height: 50vh;
-  width: 50vw;
-  margin: 20px auto;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #fff;
-}
-.bill-box3:hover{
+
+.bill-box1:hover {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   transition: 0.5s;
 }
 
-.form-group{
+.bill-box2 {
+  height: 50vh;
+  width: 50vw;
+  margin: 20px auto;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.bill-box2:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: 0.5s;
+}
+
+.bill-box3 {
+  height: 50vh;
+  width: 50vw;
+  margin: 20px auto;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.bill-box3:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: 0.5s;
+}
+
+.form-group {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -182,7 +193,8 @@ h1 {
   height: 5vh;
   padding: 10px;
 }
-.form-control:hover{
+
+.form-control:hover {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   transition: 0.5s;
 }
@@ -190,7 +202,8 @@ h1 {
 .btn-success {
   height: 7vh;
   width: 10vw;
-  background-color: #03C988; /* Green color for "Add Product" */
+  background-color: #03C988;
+  /* Green color for "Add Product" */
   color: #fff;
   border: none;
   position: relative;
@@ -198,44 +211,46 @@ h1 {
   border-radius: 3px;
 }
 
-.btn-success:hover{
+.btn-success:hover {
   background-color: #fff;
   color: #03C988;
   border: 1px solid #03C988;
   transition: 0.8s;
 }
 
-table{
+table {
   width: 50vw;
-  border:1px solid #000;
+  border: 1px solid #000;
   border-collapse: collapse;
   position: relative;
   margin: auto;
 }
 
-th, td {
+th,
+td {
   padding: 10px;
   text-align: center;
   border: 1px solid #ccc;
 }
 
 th {
-  background-color:#176B87;
+  background-color: #176B87;
   font-weight: bold;
   height: 10px;
-  color:aliceblue;
+  color: aliceblue;
   letter-spacing: 1px;
 }
 
-.buttons{
+.buttons {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 40vw;
   margin: 5vh auto;
 }
-.btn-danger{
-  background-color:crimson;
+
+.btn-danger {
+  background-color: crimson;
   border: none;
   color: aliceblue;
   height: 20px;
@@ -243,22 +258,28 @@ th {
   border-radius: 3px;
 }
 
-.btn-primary, .btn-info, .btn-secondary{
+.btn-primary,
+.btn-info,
+.btn-secondary {
   height: 7vh;
   width: 10vw;
-  background-color:#176B87; /* Green color for "Add Product" */
+  background-color: #176B87;
+  /* Green color for "Add Product" */
   color: #fff;
   border-radius: 5px;
   border: none;
 
 }
 
-.btn-primary:hover, .btn-info:hover, .btn-secondary:hover{
+.btn-primary:hover,
+.btn-info:hover,
+.btn-secondary:hover {
   background-color: #fff;
   color: #176B87;
   border: 1px solid #176B87;
   transition: 0.8s;
 }
+
 .invoices-nav {
   display: flex;
   flex-direction: column;
@@ -285,30 +306,195 @@ th {
   cursor: pointer;
   text-decoration: none;
 }
-.invoice-box-text{
+
+.invoice-box-text {
   margin-top: 5px;
 }
-.invoice-icon{
+
+.invoice-icon {
   font-size: 35px;
 }
 
-.invoice-box:hover{
+.invoice-box:hover {
   border: 1px solid #03C988;
   color: #03C988;
   background-color: #fff;
   transition: 0.8s;
 }
-#cent-tax, #cent-tax-amount, #state-tax, #state-tax-amount {
+
+#cent-tax,
+#cent-tax-amount,
+#state-tax,
+#state-tax-amount {
   width: 30%;
   margin-left: 10px;
 }
-.cent-tax,.state-tax{
+
+.cent-tax,
+.state-tax {
   position: relative;
   left: 6.5%;
 }
 
+.searchbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.searchbar-input {
+  padding: 10px;
+  margin-bottom: 20px;
+  width: 50%;
+  box-sizing: border-box;
+}
+
+.pagination {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 30px;
+}
+
+.pagination-btns {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 20px;
+}
+
+.pagination-button {
+  height: 20px;
+  width: 20px;
+  border: none;
+  text-align: center;
+  color: #fff;
+  background: #176B87;
+}
+
+.pagination-button-active {
+  color: #176B87;
+  background: #fff;
+  border: 1px solid #176B87;
+}
+
+.view-invoice,
+.download-invoice,
+.delete-invoice {
+  cursor: pointer;
+}
+
+.delete-invoice {
+  font-size: 20px;
+  color: rgb(242, 93, 93);
+}
+
+.download-invoice {
+  color: #03C988;
+  font-size: 20px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.overlay-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.overlay-content button {
+  margin: 5px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.overlay-content button:hover {
+  background-color: #f0f0f0;
+}
+
+.overlay-content>h2 {
+  color: rgb(242, 93, 93);
+  padding-bottom: 20px;
+}
+
+.overlay-content>p {
+  padding-bottom: 20px;
+}
+
+/* Overlay for viewing invoice */
+.invoice-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  /* Semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  /* Ensures overlay is above other elements */
+}
+
+.invoice-overlay-content {
+  background: #fff;
+  /* White background for the invoice content */
+  padding: 20px;
+  border-radius: 8px;
+  width: 90%;
+  height: 90%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #ff5c5c;
+  /* Red background for close button */
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.close-button:hover {
+  background: #ff1a1a;
+  /* Darker red on hover */
+}
+
+.invoice-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
 @media only screen and (max-width: 700px) {
-  .container{
+  .container {
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 20px;
@@ -317,6 +503,7 @@ th {
     padding-top: 55px;
     row-gap: 25px;
   }
+
   .container .box {
     height: 100%;
     width: 100%;
@@ -325,51 +512,63 @@ th {
     border: 1px solid transparent;
     color: #fff;
   }
-  .container .box .box-head{
+
+  .container .box .box-head {
     font-size: 25px;
   }
-  .num{
+
+  .num {
     width: 100px;
   }
+
   .invoice-container {
     width: 90vw;
     margin: 50px auto;
   }
-  .bill-box1{
+
+  .bill-box1 {
     height: 60vh;
     width: 80vw;
   }
-  .bill-box2{
-    height: 50vh;
-    width: 80vw;
-  }
-  .bill-box3{
+
+  .bill-box2 {
     height: 50vh;
     width: 80vw;
   }
 
-  .form-group{
+  .bill-box3 {
+    height: 50vh;
+    width: 80vw;
+  }
+
+  .form-group {
     margin-top: 20px;
   }
+
   .form-control {
     width: 40vw;
     height: 5vh;
   }
-  .bill-box-header{
+
+  .bill-box-header {
     display: block;
     align-items: center;
     margin-bottom: 10px;
   }
-  .bill-box-header h3{
-   position: relative;
-   left: 10vw;
-   margin-bottom: 10px;
-  }
-  h3.bill-details{
+
+  .bill-box-header h3 {
     position: relative;
-   left: 20vw;
+    left: 10vw;
+    margin-bottom: 10px;
   }
-  .bill-box-header .btn-primary, #reset{
+
+  h3.bill-details {
+    position: relative;
+    left: 20vw;
+  }
+
+  .bill-box-header .btn-primary,
+  #reset {
     font-size: 12px;
     width: 45vw;
     height: 4vh;
@@ -377,32 +576,81 @@ th {
     position: relative;
     left: 15vw;
   }
+
   .btn-success {
     height: 5vh;
     width: 20vw;
     margin-top: 10px;
   }
-  .table-resp{
-    overflow-x:auto;
+
+  .table-resp {
+    overflow-x: auto;
   }
-  
-  .buttons{
+
+  .buttons {
     width: 80vw;
   }
-  .btn-primary, .btn-info, .btn-secondary{
+
+  .btn-primary,
+  .btn-info,
+  .btn-secondary {
     width: 25vw;
   }
+
   .invoice-box {
     height: 15vh;
     width: 50vw;
   }
-  #cent-tax, #cent-tax-amount, #state-tax, #state-tax-amount {
+
+  #cent-tax,
+  #cent-tax-amount,
+  #state-tax,
+  #state-tax-amount {
     width: 30%;
     margin-left: 10px;
   }
-  .cent-tax,.state-tax{
+
+  .cent-tax,
+  .state-tax {
     position: relative;
     left: 22%;
   }
-  
+
+  th,
+  td {
+    padding: 5px;
+    font-size: 10px;
+  }
+
+  .searchbar-input {
+    width: 70%;
+    margin-bottom: 10px;
+  }
+
+  .pagination-btns {
+    gap: 10px;
+  }
+
+  .pagination-button {
+    height: 30px;
+    width: 30px;
+  }
+
+  .view-invoice,
+  .download-invoice,
+  .delete-invoice {
+    font-size: 16px;
+  }
+
+  .overlay-content {
+    width: 90%;
+    padding: 10px;
+  }
+
+  .invoice-overlay-content {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+  }
+
 }

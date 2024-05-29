@@ -6,6 +6,7 @@ import Invoices from './pages/Invoices';
 import CreateInvoices from './pages/CreateInvoices'
 import Products from './pages/Products';
 import Customers from './pages/Customers';
+import ManageInvoices from './pages/ManageInvoices';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route index element={<Dashboard />} />
           <Route path={'/invoices/'} element={<Invoices />} />
           <Route path={'/invoices/create'} element={<CreateInvoices />} />
+          <Route path={'/invoices/manage'} element={<ManageInvoices />} />
           <Route path={'/products'} element={<Products />} />
           <Route path={'/customers'} element={<Customers />} />
         </Route>
