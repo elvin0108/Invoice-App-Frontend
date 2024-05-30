@@ -52,7 +52,7 @@ const OrderForm = () => {
 
   const updateGrandTotal = (amount, centralTaxAmount, stateTaxAmount, roundoff) => {
     const total = parseFloat(amount) + parseFloat(centralTaxAmount) + parseFloat(stateTaxAmount) + parseFloat(roundoff);
-    setGrandTotal(total);
+    setGrandTotal(total.toFixed(2));
   };
 
   const addProduct = () => {
@@ -149,7 +149,9 @@ const OrderForm = () => {
       const a = document.createElement('a');
       a.style.display = 'none';
       a.href = url;
-      a.download = `${invoiceId}.pdf`;
+      let res = await fetch(`https://dkengineering-backend.onrender.com/invoice/download/getPdfName/${invoiceId}`);
+      let data = await res.json();
+      a.download = `${data.FileName}.pdf`;
       document.body.appendChild(a);
       a.click();
       window.URL.revokeObjectURL(url);
