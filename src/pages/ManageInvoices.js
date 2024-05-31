@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { FaRegEye } from "react-icons/fa";
 import { AiOutlineDelete, AiOutlineClose } from "react-icons/ai";
 import { IoMdDownload } from "react-icons/io";
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const ManageInvoices = () => {
@@ -16,8 +16,10 @@ const ManageInvoices = () => {
     const [invoiceToDelete, setInvoiceToDelete] = useState(null);
     const [iframeSrc, setIframeSrc] = useState('');
     const [showInvoiceOverlay, setShowInvoiceOverlay] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
     const fetchInvoices = useCallback(async () => {
+        setIsLoading(true)
         try {
             const response = await fetch(`https://dkengineering-backend.onrender.com/invoices/manage/getAllInvoices?page=${currentPage}&searchTerm=${searchTerm}&sortField=${sortField}&sortOrder=${sortOrder}`);
             const data = await response.json();
@@ -25,6 +27,8 @@ const ManageInvoices = () => {
             setTotalPages(data.totalPages);
         } catch (error) {
             console.error('Error fetching invoices:', error);
+        } finally {
+            setIsLoading(false); // Stop loading
         }
     }, [currentPage, searchTerm, sortField, sortOrder]);
     
@@ -97,44 +101,49 @@ const ManageInvoices = () => {
     };
 
     const handleDownload = async (invoiceId) => {
+        setIsLoading(true); // Start loading
         toast.success("Downloading the invoice", {
-          position: toast.POSITION.TOP_RIGHT,
+            position: toast.POSITION.TOP_RIGHT,
         });
-      
-        try {
-          const response = await fetch(`https://dkengineering-backend.onrender.com/invoice/download/${invoiceId}`, { //https://dkengineering-backend.onrender.com
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-          });
-      
-          if (!response.ok) {
-            throw new Error('Network response was not ok');
-          }
-      
-          const blob = await response.blob();
-          const url = window.URL.createObjectURL(blob);
-          const a = document.createElement('a');
-          a.style.display = 'none';
-          a.href = url;
-          a.download = invoiceId+'.pdf';
-          document.body.appendChild(a);
-          a.click();
-          window.URL.revokeObjectURL(url);
-      
-          toast.success("Invoice download successful", {
-            position: toast.POSITION.TOP_RIGHT,
-          });
-        } catch (error) {
-          console.error('API error:', error);
-          toast.error("Error in Downloading Invoice", {
-            position: toast.POSITION.TOP_RIGHT,
-          });
-        }
-      };
 
-      const filteredInvoices = invoices.filter(invoice => 
+        try {
+            const response = await fetch(`https://dkengineering-backend.onrender.com/invoice/download/${invoiceId}`, { 
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+
+            const blob = await response.blob();
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.style.display = 'none';
+            a.href = url;
+            let res = await fetch(`https://dkengineering-backend.onrender.com/invoice/download/getPdfName/${invoiceId}`);
+            let data = await res.json();
+            a.download = `${data.FileName}.pdf`;
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+
+            toast.success("Invoice download successful", {
+                position: toast.POSITION.TOP_RIGHT,
+            });
+        } catch (error) {
+            console.error('API error:', error);
+            toast.error("Error in Downloading Invoice", {
+                position: toast.POSITION.TOP_RIGHT,
+            });
+        } finally {
+            setIsLoading(false); // Stop loading
+        }
+    };
+
+    const filteredInvoices = invoices.filter(invoice => 
         invoice.CustomerDetail.customerName.toLowerCase().includes(searchTerm.toLowerCase())
     );
     
@@ -151,6 +160,12 @@ const ManageInvoices = () => {
 
     return (
         <div>
+            {isLoading && (
+                <div className="loading-mask">
+                    <div className="spinner"></div>
+                </div>
+            )}
+            <ToastContainer />
             <h1>Invoices</h1>
             {showOverlay && (
                 <div className="overlay">
@@ -194,7 +209,7 @@ const ManageInvoices = () => {
                     {sortedInvoices.map(invoice => (
                         <tr key={invoice._id}>
                             <td>{invoice.CustomerDetail.customerName}</td>
-                            <td>{invoice.BillingDetails.TaxableAmount}</td>
+                            <td>{invoice.BillingDetails.GrandTotal}</td>
                             <td>{new Date(invoice.createdAt).toLocaleDateString("en-IN")}</td>
                             <td>
                                 <FaRegEye className='view-invoice' onClick={() => handleViewClick(invoice._id)}/>

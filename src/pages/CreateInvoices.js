@@ -27,6 +27,7 @@ const OrderForm = () => {
 
   const [invoiceId, setInvoiceID] = useState('');
   const [isDownloadDisabled, setIsDownloadDisabled] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     // Enable the download button if invoiceId is set
@@ -128,6 +129,7 @@ const OrderForm = () => {
   };
 
   const handleDownload = async () => {
+    setIsLoading(true)
     toast.success('Downloading the invoice', {
       position: toast.POSITION.TOP_RIGHT,
     });
@@ -164,10 +166,13 @@ const OrderForm = () => {
       toast.error('Error in Downloading Invoice', {
         position: toast.POSITION.TOP_RIGHT,
       });
+    } finally {
+      setIsLoading(false); // Stop loading
     }
   };
 
   const handlePrint = async () => {
+    setIsLoading(true)
     toast.success('Preparing invoice for printing', {
       position: toast.POSITION.TOP_RIGHT,
     });
@@ -196,11 +201,18 @@ const OrderForm = () => {
       toast.error('Error in preparing invoice for printing', {
         position: toast.POSITION.TOP_RIGHT,
       });
+    } finally {
+      setIsLoading(false); // Stop loading
     }
   };
 
   return (
     <div className="create-invoice">
+      {isLoading && (
+                <div className="loading-mask">
+                    <div className="spinner"></div>
+                </div>
+      )}
       <ToastContainer />
       <div className="invoice-container">
         <h1>Create Invoice</h1>
@@ -276,7 +288,7 @@ const OrderForm = () => {
         <div className="bill-box2">
           <div className="bill-box-header">
             <h3>Products information</h3>
-            <Button className="select">Select Existing Customer</Button>
+            <Button className="select">Select Existing Product</Button>
           </div>
           <hr />
           <Form>
