@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Button, Table, Form } from 'react-bootstrap';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import CustomerOverlay from './CustomerOverlay';
+import ProductOverlay from './ProductOverlay';
 
 const OrderForm = () => {
   const [customerName, setCustomerName] = useState('');
@@ -10,6 +12,9 @@ const OrderForm = () => {
   const [address, setAddress] = useState('');
   const [placeOfSupply, setPlaceOfSupply] = useState('');
   const [gstInNo, setGstInNo] = useState('');
+  const [showOverlay, setShowOverlay] = useState(false);
+  const [showProductOverlay, setShowProductOverlay] = useState(false);
+
 
   const [products, setProducts] = useState([]);
   const [productDescription, setProductDescription] = useState('');
@@ -206,6 +211,21 @@ const OrderForm = () => {
     }
   };
 
+  const handleSelectCustomer = (customer) => {
+    setCustomerName(customer.customerName);
+    setAddress(customer.Address);
+    setPlaceOfSupply(customer.PlaceOfSupply);
+    setGstInNo(customer.GSTNo);
+    setShowOverlay(false);
+  };
+
+  const handleSelectProduct = (product) => {
+    setProductDescription(product.productDescription);
+    setHsnCode(product.hsnCode);
+    setRate(product.rate);
+    setShowProductOverlay(false);
+  }
+
   return (
     <div className="create-invoice">
       {isLoading && (
@@ -213,15 +233,24 @@ const OrderForm = () => {
                     <div className="spinner"></div>
                 </div>
       )}
+      <CustomerOverlay
+        show={showOverlay}
+        onClose={() => setShowOverlay(false)}
+        onSelect={handleSelectCustomer}
+      />
+      <ProductOverlay
+        show={showProductOverlay}
+        onClose={() => setShowProductOverlay(false)}
+        onSelect={handleSelectProduct}
+      />
       <ToastContainer />
       <div className="invoice-container">
         <h1>Create Invoice</h1>
         <hr />
-
         <div className="bill-box1">
           <div className="bill-box-header">
             <h3>Customer information</h3>
-            <Button className="select">Select Existing Customer</Button>
+            <Button className="select"  onClick={() => setShowOverlay(true)}>Select Existing Customer</Button>
           </div>
           <hr />
           <Form>
@@ -288,7 +317,7 @@ const OrderForm = () => {
         <div className="bill-box2">
           <div className="bill-box-header">
             <h3>Products information</h3>
-            <Button className="select">Select Existing Product</Button>
+            <Button className="select" onClick={() => setShowProductOverlay(true)}>Select Existing Product</Button>
           </div>
           <hr />
           <Form>
@@ -311,20 +340,20 @@ const OrderForm = () => {
             </Form.Group>
 
             <Form.Group className="form-group">
-              <Form.Label>Quantity</Form.Label>
-              <Form.Control
-                type="number"
-                value={quantity}
-                onChange={(e) => setQuantity(e.target.value)}
-              />
-            </Form.Group>
-
-            <Form.Group className="form-group">
               <Form.Label>Rate</Form.Label>
               <Form.Control
                 type="number"
                 value={rate}
                 onChange={(e) => setRate(e.target.value)}
+              />
+            </Form.Group>
+
+            <Form.Group className="form-group">
+              <Form.Label>Quantity</Form.Label>
+              <Form.Control
+                type="number"
+                value={quantity}
+                onChange={(e) => setQuantity(e.target.value)}
               />
             </Form.Group>
 

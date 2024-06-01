@@ -40,7 +40,7 @@ export const SidebarData = [
   },
   {
     title: 'Products',
-    path: '/',
+    path: '/products',
     icon: <BsIcons.BsFillHouseGearFill />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
@@ -62,7 +62,7 @@ export const SidebarData = [
   },
   {
     title: 'Customers',
-    path: '/',
+    path: '/customers',
     icon: <FaIcons.FaUsersCog />,
 
     iconClosed: <RiIcons.RiArrowDownSFill />,

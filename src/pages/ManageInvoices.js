@@ -166,7 +166,7 @@ const ManageInvoices = () => {
                 </div>
             )}
             <ToastContainer />
-            <h1>Invoices</h1>
+            <h1 class="manage-invoice-header">Invoices</h1>
             {showOverlay && (
                 <div className="overlay">
                     <div className="overlay-content">

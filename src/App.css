@@ -378,6 +378,10 @@ th {
   border: 1px solid #176B87;
 }
 
+.manage-invoice-header {
+  margin: 20px;
+}
+
 .view-invoice,
 .download-invoice,
 .delete-invoice {
@@ -520,6 +524,250 @@ th {
   100% { transform: rotate(360deg); }
 }
 
+.manage-products-header, .manage-customers-header{
+  margin: 20px;
+}
+
+.manage-product-search-add, .manage-customer-search-add{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 10px;
+}
+
+.manage-product-header, .manage-customer-header{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 10px;
+  width: 50%;
+}
+
+.manage-product-searchbar, .manage-customer-searchbar {
+  width: 100%;
+}
+
+.manage-product-searchbar-input, .manage-customer-searchbar-input {
+  width: 100%;
+  height: 30px;
+  padding: 10px;
+}
+.manage-add-product-box, .manage-add-customer-box{
+  text-decoration: none;
+}
+.manage-add-product-icon, .manage-add-customer-icon{
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.edit-product, .edit-customer{
+  color: #03C988;
+  font-size: 20px;
+}
+
+.delete-product, .delete-customer{
+  color: #ff1a1a;
+  font-size: 20px;
+}
+
+.product-overlay-searchbar-input, .customer-overlay-searchbar-input{
+  width: 100%;
+  height: 30px;
+  margin-top: 10px;
+  padding: 5px;
+}
+
+.customers-list-overlay, .products-list-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.customers-list-overlay-content, .products-list-overlay-content {
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  width: 70%;
+  max-height: 95%;
+  overflow-y: auto;
+  position: relative;
+}
+
+.customers-list-overlay-content h3, .products-list-overlay-content h3 {
+  margin-top: 0;
+  text-align: center;
+}
+
+.customers-list-close-button, .products-list-close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  background: #ff1a1a;
+  border-radius: 50%;
+  padding: 2px;
+  color: white;
+}
+
+.customers-list-close-button:hover, .products-list-close-button:hover{
+  cursor: pointer;
+}
+
+.customers-list-overlay-content table, .products-list-overlay-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.customers-list-overlay-content tr:hover, .products-list-overlay-content tr:hover {
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+.add-product-page h1, .add-customer-page h1{
+  margin: 20px;
+  text-align: center;
+}
+
+.add-product-page-bill-box{
+  height: 45vh;
+}
+
+.add-customer-page-bill-box{
+  height: 50vh;
+}
+.add-product-page-bill-box, .add-customer-page-bill-box{
+  width: 50vw;
+  margin: 20px auto;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.add-product-page-bill-box-header, .add-customer-page-bill-box-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.add-product-page-add-button, .add-customer-page-add-button{
+  margin-top: 20px;
+}
+
+.add-product-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 50px;
+  
+}
+
+.add-product-box, .add-customer-box {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center items horizontally */
+  gap: 10px;
+  text-decoration: none;
+  background-color: #279EFF;
+  padding: 10px;
+  color: #fff;
+  border-radius: 3px;
+  border: 1px solid transparent;
+  transition: 0.8s;
+}
+
+.add-product-box:hover, .add-customer-box:hover {
+  border: 1px solid #279EFF;
+  color: #279EFF;
+  background-color: #fff;
+}
+
+.add-product-icon, .add-product-box-text {
+  display: flex;
+  align-items: center; /* Center items vertically */
+}
+
+.manage-product-overlay, .manage-customer-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.manage-product-overlay-content, .manage-customer-overlay-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  max-width: 50%;
+  width: 100%;
+  text-align: center;
+}
+
+.manage-product-overlay-content h2, .manage-customer-overlay-content h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.manage-product-overlay-content form, .manage-customer-overlay-content form {
+  display: flex;
+  flex-direction: column;
+}
+
+.manage-product-overlay-content form label, .manage-customer-overlay-content form label {
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.manage-product-overlay-content form input, .manage-customer-overlay-content form input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 5px;
+}
+
+.manage-product-overlay-content form button, .manage-customer-overlay-content form button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #03C988;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.manage-product-overlay-content form button:hover, .manage-customer-overlay-content form button:hover {
+  background-color: #04ab73;
+}
+
+.manage-product-overlay-content form button[type="button"], .manage-customer-overlay-content form button[type="button"] {
+  background-color: #6c757d;
+  /* margin-left: 10px; */
+}
+
+.manage-product-overlay-content form button[type="button"]:hover, .manage-customer-overlay-content form button[type="button"]:hover {
+  background-color: #5a6268;
+}
 
 @media only screen and (max-width: 700px) {
   .container {
@@ -562,6 +810,16 @@ th {
   .bill-box2 {
     height: 50vh;
     width: 80vw;
+  }
+
+  .add-product-page-bill-box{
+    height: 45vh;
+    width: 90vw;
+  }
+
+  .add-customer-page-bill-box{
+    height: 50vh;
+    width: 90vw;
   }
 
   .bill-box3 {
@@ -607,7 +865,7 @@ th {
 
   .btn-success {
     height: 5vh;
-    width: 20vw;
+    width: 25vw;
     margin-top: 10px;
   }
 
@@ -679,6 +937,10 @@ th {
     width: 100%;
     height: 100%;
     border-radius: 0;
+  }
+
+  .manage-product-overlay-content{
+    max-width: 90%;
   }
 
 }
