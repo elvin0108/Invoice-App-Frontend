@@ -12,8 +12,13 @@ const CustomerOverlay = ({ show, onClose, onSelect }) => {
 
     const fetchCustomers = useCallback(async () => {
         setIsLoading(true);
+        const token = localStorage.getItem('token');
+        const headers = {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        }
         try {
-            const response = await fetch(`https://dkengineering-backend.onrender.com/customers/manage/getAllCustomers?page=${currentPage}&searchTerm=${searchTerm}&sortField=${sortField}&sortOrder=${sortOrder}`);
+            const response = await fetch(`https://dkengineering-backend.onrender.com/customers/manage/getAllCustomers?page=${currentPage}&searchTerm=${searchTerm}&sortField=${sortField}&sortOrder=${sortOrder}`, {headers});
             const data = await response.json();
             setCustomers(data.customers);
             setTotalPages(data.totalPages);

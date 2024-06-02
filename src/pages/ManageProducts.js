@@ -24,8 +24,13 @@ const ManageProducts = () => {
 
     const fetchProducts = useCallback(async () => {
         setIsLoading(true);
+        const token = localStorage.getItem('token');  
+        const headers = {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          }
         try {
-            const response = await fetch(`https://dkengineering-backend.onrender.com/products/manage/getAllProducts?page=${currentPage}&searchTerm=${searchTerm}&sortField=${sortField}&sortOrder=${sortOrder}`);
+            const response = await fetch(`https://dkengineering-backend.onrender.com/products/manage/getAllProducts?page=${currentPage}&searchTerm=${searchTerm}&sortField=${sortField}&sortOrder=${sortOrder}`, {headers});
             const data = await response.json();
             setProducts(data.products);
             setTotalPages(data.totalPages);
@@ -62,9 +67,14 @@ const ManageProducts = () => {
     };
 
     const handleDeleteConfirm = async () => {
+        const token = localStorage.getItem('token');  
         try {
             const response = await fetch(`https://dkengineering-backend.onrender.com/products/manage/deleteProduct/${productToDelete}`, {
-                method: 'DELETE'
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                  }
             });
             if (response.ok) {
                 fetchProducts();
@@ -103,12 +113,14 @@ const ManageProducts = () => {
 
     const handleEditSubmit = async (event) => {
         event.preventDefault();
+        const token = localStorage.getItem('token');  
         try {
             const response = await fetch(`https://dkengineering-backend.onrender.com/products/manage/updateProduct/${productToEdit._id}`, {
                 method: 'PUT',
                 headers: {
-                    'Content-Type': 'application/json'
-                },
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                  },
                 body: JSON.stringify(editProductData)
             });
             if (response.ok) {

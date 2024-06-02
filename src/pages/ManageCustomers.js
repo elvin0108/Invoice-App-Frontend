@@ -25,8 +25,13 @@ const ManageCustomers = () => {
 
     const fetchCustomers = useCallback(async () => {
         setIsLoading(true);
+        const token = localStorage.getItem('token');  
+        const headers = {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          }
         try {
-            const response = await fetch(`https://dkengineering-backend.onrender.com/customers/manage/getAllCustomers?page=${currentPage}&searchTerm=${searchTerm}&sortField=${sortField}&sortOrder=${sortOrder}`);
+            const response = await fetch(`https://dkengineering-backend.onrender.com/customers/manage/getAllCustomers?page=${currentPage}&searchTerm=${searchTerm}&sortField=${sortField}&sortOrder=${sortOrder}`, {headers});
             const data = await response.json();
             setCustomers(data.customers);
             setTotalPages(data.totalPages);
@@ -63,9 +68,14 @@ const ManageCustomers = () => {
     };
 
     const handleDeleteConfirm = async () => {
+        const token = localStorage.getItem('token');  
         try {
             const response = await fetch(`https://dkengineering-backend.onrender.com/customers/manage/deleteCustomer/${customerToDelete}`, {
-                method: 'DELETE'
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                  }
             });
             if (response.ok) {
                 fetchCustomers();
@@ -105,12 +115,14 @@ const ManageCustomers = () => {
 
     const handleEditSubmit = async (event) => {
         event.preventDefault();
+        const token = localStorage.getItem('token');  
         try {
             const response = await fetch(`https://dkengineering-backend.onrender.com/customers/manage/updateCustomer/${customerToEdit._id}`, {
                 method: 'PUT',
                 headers: {
-                    'Content-Type': 'application/json'
-                },
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                  },
                 body: JSON.stringify(editCustomerData)
             });
             if (response.ok) {

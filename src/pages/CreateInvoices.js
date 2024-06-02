@@ -98,6 +98,7 @@ const OrderForm = () => {
       position: toast.POSITION.TOP_RIGHT,
       autoClose: 2000,
     });
+    const token = localStorage.getItem('token');
     const formData = {
       invoiceNo,
       date,
@@ -119,6 +120,7 @@ const OrderForm = () => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
       },
       body: JSON.stringify(formData),
     })
@@ -138,12 +140,14 @@ const OrderForm = () => {
     toast.success('Downloading the invoice', {
       position: toast.POSITION.TOP_RIGHT,
     });
+    const token = localStorage.getItem('token');
 
     try {
       const response = await fetch(`https://dkengineering-backend.onrender.com/invoice/download/${invoiceId}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
         },
       });
 
@@ -156,7 +160,13 @@ const OrderForm = () => {
       const a = document.createElement('a');
       a.style.display = 'none';
       a.href = url;
-      let res = await fetch(`https://dkengineering-backend.onrender.com/invoice/download/getPdfName/${invoiceId}`);
+      let res = await fetch(`https://dkengineering-backend.onrender.com/invoice/download/getPdfName/${invoiceId}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+      });
       let data = await res.json();
       a.download = `${data.FileName}.pdf`;
       document.body.appendChild(a);
@@ -181,12 +191,13 @@ const OrderForm = () => {
     toast.success('Preparing invoice for printing', {
       position: toast.POSITION.TOP_RIGHT,
     });
-
+    const token = localStorage.getItem('token');
     try {
       const response = await fetch(`https://dkengineering-backend.onrender.com/invoice/download/${invoiceId}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
         },
       });
 

@@ -23,11 +23,13 @@ const AddProducts = () => {
             toast.success('Adding Product', {
                 position: toast.POSITION.TOP_RIGHT,
               });
+              const token = localStorage.getItem('token');  
             const response = await fetch('https://dkengineering-backend.onrender.com/products/create', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
-                },
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                  },
                 body: JSON.stringify(productData)
             });
 

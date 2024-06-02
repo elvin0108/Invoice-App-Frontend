@@ -17,17 +17,23 @@ const Dashboard = () => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const invoicesRes = await fetch('https://dkengineering-backend.onrender.com/invoices/total');
+        const token = localStorage.getItem('token');
+        const headers = {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        };
+
+        const invoicesRes = await fetch('https://dkengineering-backend.onrender.com/invoices/total', { headers });
         const invoicesData = await invoicesRes.json();
         setTotalInvoices(invoicesData.totalInvoices);
         setSalesAmount(invoicesData.salesAmount);
 
         // Fetch other data
-        const customersRes = await fetch('https://dkengineering-backend.onrender.com/customers/total');
+        const customersRes = await fetch('https://dkengineering-backend.onrender.com/customers/total', { headers });
         const customersData = await customersRes.json();
         setTotalCustomers(customersData);
 
-        const productsRes = await fetch('https://dkengineering-backend.onrender.com/products/total');
+        const productsRes = await fetch('https://dkengineering-backend.onrender.com/products/total', { headers });
         const productsData = await productsRes.json();
         setTotalProducts(productsData);
 

@@ -19,9 +19,14 @@ const ManageInvoices = () => {
     const [isLoading, setIsLoading] = useState(false);
 
     const fetchInvoices = useCallback(async () => {
-        setIsLoading(true)
+        setIsLoading(true);
+        const token = localStorage.getItem('token');
+        const headers = {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          }
         try {
-            const response = await fetch(`https://dkengineering-backend.onrender.com/invoices/manage/getAllInvoices?page=${currentPage}&searchTerm=${searchTerm}&sortField=${sortField}&sortOrder=${sortOrder}`);
+            const response = await fetch(`https://dkengineering-backend.onrender.com/invoices/manage/getAllInvoices?page=${currentPage}&searchTerm=${searchTerm}&sortField=${sortField}&sortOrder=${sortOrder}`, {headers});
             const data = await response.json();
             setInvoices(data.invoices);
             setTotalPages(data.totalPages);
@@ -60,9 +65,14 @@ const ManageInvoices = () => {
     };
 
     const handleDeleteConfirm = async () => {
+        const token = localStorage.getItem('token');
         try {
             const response = await fetch(`https://dkengineering-backend.onrender.com/invoices/manage/deleteInvoice/${invoiceToDelete}`, {
-                method: 'DELETE'
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                  }
             });
             if (response.ok) {
                 // Fetch invoices again after deletion
@@ -83,8 +93,14 @@ const ManageInvoices = () => {
     };
 
     const handleViewClick = async (invoiceId) => {
+        const token = localStorage.getItem('token');
         try {
-            const response = await fetch(`https://dkengineering-backend.onrender.com/invoices/manage/viewInvoice/${invoiceId}`);
+            const response = await fetch(`https://dkengineering-backend.onrender.com/invoices/manage/viewInvoice/${invoiceId}`, {
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': `Bearer ${token}`
+                },
+              });
             const htmlContent = await response.text();
             const blob = new Blob([htmlContent], { type: 'text/html' });
             const url = URL.createObjectURL(blob);
@@ -105,13 +121,14 @@ const ManageInvoices = () => {
         toast.success("Downloading the invoice", {
             position: toast.POSITION.TOP_RIGHT,
         });
-
+        const token = localStorage.getItem('token');
         try {
             const response = await fetch(`https://dkengineering-backend.onrender.com/invoice/download/${invoiceId}`, { 
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                },
+                    'Authorization': `Bearer ${token}`
+                  },
             });
 
             if (!response.ok) {
@@ -123,7 +140,12 @@ const ManageInvoices = () => {
             const a = document.createElement('a');
             a.style.display = 'none';
             a.href = url;
-            let res = await fetch(`https://dkengineering-backend.onrender.com/invoice/download/getPdfName/${invoiceId}`);
+            let res = await fetch(`https://dkengineering-backend.onrender.com/invoice/download/getPdfName/${invoiceId}`, {
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': `Bearer ${token}`
+                },
+              });
             let data = await res.json();
             a.download = `${data.FileName}.pdf`;
             document.body.appendChild(a);

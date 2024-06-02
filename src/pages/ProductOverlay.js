@@ -12,8 +12,13 @@ const ProductOverlay = ({ show, onClose, onSelect }) => {
 
   const fetchProducts = useCallback(async () => {
     setIsLoading(true);
+    const token = localStorage.getItem('token');  
+    const headers = {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      } 
     try {
-        const response = await fetch(`https://dkengineering-backend.onrender.com/products/manage/getAllProducts?page=${currentPage}&searchTerm=${searchTerm}&sortField=${sortField}&sortOrder=${sortOrder}`);
+        const response = await fetch(`https://dkengineering-backend.onrender.com/products/manage/getAllProducts?page=${currentPage}&searchTerm=${searchTerm}&sortField=${sortField}&sortOrder=${sortOrder}`, {headers});
         const data = await response.json();
         setProducts(data.products);
         setTotalPages(data.totalPages);
