@@ -19,6 +19,8 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const [currentMessage, setCurrentMessage] = useState(0);
     const navigate = useNavigate();
+    const [isLoading, setIsLoading] = useState(false);
+    const [isAutheticated, setIsAuthenticated] = useState(false);
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -30,24 +32,39 @@ const Login = () => {
 
     const handleLogin = async (event) => {
         event.preventDefault();
+        setIsLoading(true);
 
-        const response = await fetch('https://dkengineering-backend.onrender.com/login', {
+        try {
+            const response = await fetch('https://dkengineering-backend.onrender.com/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ username, password })
         });
 
         if (response.ok) {
+            setIsAuthenticated(false);
             const data = await response.json();
             localStorage.setItem('token', data.token);
             navigate('/');
         } else {
+            setIsAuthenticated(true);
             console.error('Login failed');
         }
+        } catch (e) {
+            console.log('Error in login', e);
+        } finally {
+            setIsLoading(false); // Stop loading
+        }
+        
     };
 
     return (
         <div className="login-container">
+            {isLoading && (
+                <div className="loading-mask">
+                    <div className="spinner"></div>
+                </div>
+            )}
             <h1 className="welcome-message">{messages[currentMessage]}</h1>
             <div className="login-form-container">
                 <div className="login-content">
@@ -61,7 +78,7 @@ const Login = () => {
                             type="text"
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
-                            placeholder="Username"
+                            placeholder="Email"
                             required
                             className="login-input"
                         />
@@ -73,6 +90,11 @@ const Login = () => {
                             required
                             className="login-input"
                         />
+                        {isAutheticated && (
+                            <div className="not-authenicared-text">
+                                <p>Invalid email id or password...</p>
+                            </div>
+            )}
                         <button type="submit" className="login-button">Login</button>
                     </form>
                     </div>

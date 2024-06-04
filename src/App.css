@@ -83,6 +83,12 @@ h1 {
   background-color: #02ad74;
 }
 
+.not-authenicared-text {
+  margin-bottom: 20px;
+  font-size: 12px;
+  color: #ff1a1a;
+}
+
 .home {
   color: black;
 }
